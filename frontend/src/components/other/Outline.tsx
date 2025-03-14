@@ -1,18 +1,30 @@
 import classes from "./Outline.module.css";
 
-import { Group, Textarea } from "@mantine/core";
+import { Box, Group, Textarea } from "@mantine/core";
+import { useHover } from "@mantine/hooks";
 import { OutlineCircle } from "../button/OutlineCircle";
 import { OutlineExpand } from "../button/OutlineExpand";
 import { OutlineOptions } from "../button/OutlineOptions";
 
 export function Outline() {
+	const { hovered, ref } = useHover();
+
 	return (
-		<Group gap={5} align="start" wrap="nowrap">
-			<OutlineOptions />
-			<OutlineExpand />
-			<OutlineCircle />
-			<TextOutline />
-		</Group>
+		<Box ref={ref}>
+			<Group gap={5} align="start" wrap="nowrap">
+				<Box
+					style={{
+						display: "contents",
+						visibility: hovered ? "visible" : "hidden",
+					}}
+				>
+					<OutlineOptions />
+					<OutlineExpand />
+				</Box>
+				<OutlineCircle />
+				<TextOutline />
+			</Group>
+		</Box>
 	);
 }
 
@@ -21,7 +33,7 @@ function TextOutline() {
 		<Textarea
 			w="100%"
 			autosize
-			minRows={0}
+			variant="transparent"
 			placeholder="Start typing..."
 			classNames={{
 				input: classes.textOutline,
