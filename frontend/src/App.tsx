@@ -14,9 +14,10 @@ import {
 	MantineProvider,
 	Stack,
 	ThemeIcon,
+	Title,
 } from "@mantine/core";
 import { IconLetterCase, IconPhoto, IconQuote } from "@tabler/icons-react";
-import { HomeButton } from "./components/button/HomeButton";
+import { Logo } from "./components/image/Logo";
 import { Outline } from "./components/other/Outline";
 
 function App() {
@@ -29,8 +30,9 @@ function App() {
 		<MantineProvider theme={theme} forceColorScheme="dark">
 			<Box p="lg">
 				<Stack>
+					<Title order={2}>Hello world</Title>
 					<Breadcrumbs>
-						<HomeButton />
+						<Logo />
 						<Group gap={5}>
 							<ThemeIcon variant="light" size="xs" title="Text">
 								<IconLetterCase />
@@ -56,6 +58,7 @@ function App() {
 							</Anchor>
 						</Group>
 					</Breadcrumbs>
+					<Outline />
 					<Outline />
 				</Stack>
 			</Box>
